@@ -1,6 +1,5 @@
 package main.java.restjersey;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
