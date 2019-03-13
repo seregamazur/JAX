@@ -7,18 +7,24 @@
         <sourceDirectory>src</sourceDirectory>
         <plugins>
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <attachClasses>true</attachClasses>
+                    <webXml>web/WEB-INF/web.xml</webXml>
+                    <webResources>
+                        <resource>
+                            <directory>src</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-    <groupId>solo.jax</groupId>
+    <groupId>JaxRS</groupId>
     <artifactId>JaxRS</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
     <dependencies>
         <dependency>
             <groupId>asm</groupId>
