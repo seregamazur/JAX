@@ -1,5 +1,9 @@
 package main.java.restjersey;
 
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +16,7 @@ public class MockedBooks {
 
     public static MockedBooks getInstance() {
         if (mockedBooks == null) {
-            MockedBooks mockedBooks = new MockedBooks();
+            mockedBooks = new MockedBooks();
         }
         return mockedBooks;
     }
@@ -35,6 +39,12 @@ public class MockedBooks {
 
     public void deleteBook(int id) {
         books.remove(id);
+    }
+
+    public JSONArray toJsonArray(){
+        JSONArray jsonArray =new JSONArray();
+        jsonArray.put(books);
+        return jsonArray;
     }
 
 

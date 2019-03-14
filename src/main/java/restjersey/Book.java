@@ -1,5 +1,7 @@
 package main.java.restjersey;
 
+import org.json.JSONObject;
+
 public class Book {
     private String name;
     private float price;
@@ -34,6 +36,15 @@ public class Book {
     public void setPrice(float price) {
         this.price = price;
     }
+
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Book name:", this.name);
+        jsonObject.put("Book author:", this.author);
+        jsonObject.put("Book price:", this.price);
+        return jsonObject;
+    }
+
 
 }
 

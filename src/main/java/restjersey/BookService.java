@@ -1,7 +1,6 @@
 package main.java.restjersey;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,31 +10,22 @@ import javax.ws.rs.core.Response;
 
 @Path("/books")
 public class BookService {
-
+    MockedBooks mockedBooks = MockedBooks.getInstance();
     @GET
     @Produces("application/json")
     public Response getBooks() throws JSONException {
-
-        JSONObject jsonObject = new JSONObject();
-       // jsonObject.put("Book name", );
-      //  jsonObject.put("C Value", celsius);
-
-        String result = "@Produces(\"application/json\") Output: \n\nF to C Converter Output: \n\n" + jsonObject;
-        return Response.status(200).entity(result).build();
+        return Response.status(200).entity(mockedBooks.toJsonArray()).build();
     }
 
     @Path("{f}")
     @GET
     @Produces("application/json")
-    public Response convertFtoCfromInput(@PathParam("f") float f) throws JSONException {
-
-        JSONObject jsonObject = new JSONObject();
-        float celsius;
-        celsius = (f - 32) * 5 / 9;
-        jsonObject.put("F Value", f);
-        jsonObject.put("C Value", celsius);
-
-        String result = "@Produces(\"application/json\") Output: \n\nF to C Converter Output: \n\n" + jsonObject;
-        return Response.status(200).entity(result).build();
+    public Response getBookById(@PathParam("f") int f) throws JSONException {
+        mockedBooks.addBook(new Book("Hi","Serhiy Mazur",13.45f));
+        mockedBooks.addBook(new Book("Hi","Serhiy Mazur",13.45f));
+        mockedBooks.addBook(new Book("Hi","Serhiy Mazur",13.45f));
+        return Response.status(200).entity(mockedBooks.getBook(f).toJson()).build();
     }
+
+
 }
