@@ -9,19 +9,16 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-@Path("/ftocservice")
-public class FtoCService {
+@Path("/books")
+public class BookService {
 
     @GET
     @Produces("application/json")
-    public Response convertFtoC() throws JSONException {
+    public Response getBooks() throws JSONException {
 
         JSONObject jsonObject = new JSONObject();
-        Double fahrenheit = 98.24;
-        Double celsius;
-        celsius = (fahrenheit - 32) * 5 / 9;
-        jsonObject.put("F Value", fahrenheit);
-        jsonObject.put("C Value", celsius);
+       // jsonObject.put("Book name", );
+      //  jsonObject.put("C Value", celsius);
 
         String result = "@Produces(\"application/json\") Output: \n\nF to C Converter Output: \n\n" + jsonObject;
         return Response.status(200).entity(result).build();
