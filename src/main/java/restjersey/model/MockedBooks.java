@@ -1,14 +1,13 @@
-package main.java.restjersey;
+package main.java.restjersey.model;
 
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class MockedBooks {
-    private List<Book> books = new LinkedList<>();
+    private static List<Book> books = new LinkedList<>();
     private static MockedBooks mockedBooks;
 
     private MockedBooks() {

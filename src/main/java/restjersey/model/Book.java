@@ -1,4 +1,4 @@
-package main.java.restjersey;
+package main.java.restjersey.model;
 
 import org.json.JSONObject;
 
