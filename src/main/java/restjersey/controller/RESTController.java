@@ -1,5 +1,6 @@
 package main.java.restjersey.controller;
 
+import main.java.restjersey.model.Book;
 import main.java.restjersey.service.BookService;
 import org.json.JSONException;
 
@@ -31,7 +32,16 @@ public class RESTController {
     public Response deleteBookByID(@PathParam("bookID") int ID) throws JSONException {
         return service.deleteBookByID(ID);
     }
+/*
+    @POST
+    @Path("save")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public void saveBook(Book book){
+        service.addBook(book);
 
+    }
+*/
     @PostConstruct
     public void init() {
         service.initializeShell();
@@ -41,4 +51,6 @@ public class RESTController {
     public void destroy() {
         service.clearShell();
     }
+
+
 }

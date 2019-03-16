@@ -1,13 +1,13 @@
 package main.java.restjersey.service;
 
 import main.java.restjersey.model.Book;
-import main.java.restjersey.model.MockedBooks;
+import main.java.restjersey.model.BooksDataService;
 import org.json.JSONException;
 
 import javax.ws.rs.core.Response;
 
 public class BookService {
-    private final MockedBooks mockedBooks = MockedBooks.getInstance();
+    private final BooksDataService mockedBooks = BooksDataService.getInstance();
 
     public Response getBooks() throws JSONException {
         String result = "" + mockedBooks.toJsonArray();
@@ -15,7 +15,7 @@ public class BookService {
     }
 
     public Response getBookById(int ID) throws JSONException {
-        String result = "" + mockedBooks.getBook(ID).toJson();
+        String result = "" + mockedBooks.getBookByID(ID).toJson();
         return Response.status(200).entity(result).build();
     }
 
@@ -25,10 +25,14 @@ public class BookService {
         return Response.status(200).entity(result).build();
     }
 
+    public void addBook(Book book){
+        mockedBooks.getBooks().add(book);
+    }
+
     public void initializeShell() {
-        mockedBooks.addBook(new Book("First Book", "Serhiy Mazur", 9.45f));
-        mockedBooks.addBook(new Book("Second Book", "Serhiy Mazur", 5.44f));
-        mockedBooks.addBook(new Book("Third Book", "Serhiy Mazur", 19.99f));
+        mockedBooks.addBook(new Book(1,"First Book", "Serhiy Mazur", 9.45f));
+        mockedBooks.addBook(new Book(2,"Second Book", "Serhiy Mazur", 5.44f));
+        mockedBooks.addBook(new Book(3,"Third Book", "Serhiy Mazur", 19.99f));
     }
 
     public void clearShell() {
