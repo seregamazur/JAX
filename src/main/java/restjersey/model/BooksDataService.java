@@ -20,9 +20,10 @@ public class BooksDataService {
         return mockedBooks;
     }
 
-    public void addBook(Book book) {
-        book.setID(mockedBooks.getBooks().size() + 1);
+    public Book addBook(Book book) {
+        book.setID(books.size() + 1);
         books.add(book);
+        return book;
     }
 
     public List<Book> getBooks() {

@@ -1,9 +1,9 @@
 package main.java.restjersey.controller;
 
+import com.google.gson.Gson;
 import main.java.restjersey.model.Book;
 import main.java.restjersey.service.BookService;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -38,14 +38,12 @@ public class RESTController {
     @Path("/save")
     @Consumes("application/json")
     @Produces("application/json")
-    public String post(String jsonRequest) {
-        JSONObject jsonObject = new JSONObject(jsonRequest);
 
-        return jsonObject.toString();
-    }
-    /*public Response saveBook(Book book){
+    public Response saveBook(String json) {
+        Gson gson = new Gson();
+        Book book = gson.fromJson(json, Book.class);
         return service.addBook(book);
-    }*/
+    }
 
     @PostConstruct
     public void init() {

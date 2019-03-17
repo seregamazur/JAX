@@ -25,15 +25,15 @@ public class BookService {
         return Response.status(200).entity(result).build();
     }
 
-    public Response addBook(Book book){
-        mockedBooks.getBooks().add(book);
-        return Response.status(201).entity(book).build();
+    public Response addBook(Book book) {
+        String result = "" + mockedBooks.addBook(book).toJson();
+        return Response.status(201).entity(result).build();
     }
 
     public void initializeShell() {
-        mockedBooks.addBook(new Book(1,"First Book", "Serhiy Mazur", 9.45f));
-        mockedBooks.addBook(new Book(2,"Second Book", "Serhiy Mazur", 5.44f));
-        mockedBooks.addBook(new Book(3,"Third Book", "Serhiy Mazur", 19.99f));
+        mockedBooks.addBook(new Book(1, "First Book", "Serhiy Mazur", 9.45f));
+        mockedBooks.addBook(new Book(2, "Second Book", "Serhiy Mazur", 5.44f));
+        mockedBooks.addBook(new Book(3, "Third Book", "Serhiy Mazur", 19.99f));
     }
 
     public void clearShell() {
