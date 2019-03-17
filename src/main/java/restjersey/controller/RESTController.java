@@ -3,6 +3,7 @@ package main.java.restjersey.controller;
 import main.java.restjersey.model.Book;
 import main.java.restjersey.service.BookService;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -36,9 +37,15 @@ public class RESTController {
     @POST
     @Path("/save")
     @Consumes("application/json")
-    public Response saveBook(Book book){
-        return service.addBook(book);
+    @Produces("application/json")
+    public String post(String jsonRequest) {
+        JSONObject jsonObject = new JSONObject(jsonRequest);
+
+        return jsonObject.toString();
     }
+    /*public Response saveBook(Book book){
+        return service.addBook(book);
+    }*/
 
     @PostConstruct
     public void init() {
