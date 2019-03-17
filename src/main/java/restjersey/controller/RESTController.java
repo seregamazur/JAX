@@ -32,16 +32,14 @@ public class RESTController {
     public Response deleteBookByID(@PathParam("bookID") int ID) throws JSONException {
         return service.deleteBookByID(ID);
     }
-/*
-    @POST
-    @Path("save")
-    @Consumes("application/json")
-    @Produces("application/json")
-    public void saveBook(Book book){
-        service.addBook(book);
 
+    @POST
+    @Path("/save")
+    @Consumes("application/json")
+    public Response saveBook(Book book){
+        return service.addBook(book);
     }
-*/
+
     @PostConstruct
     public void init() {
         service.initializeShell();

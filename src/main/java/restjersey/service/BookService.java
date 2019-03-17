@@ -25,8 +25,9 @@ public class BookService {
         return Response.status(200).entity(result).build();
     }
 
-    public void addBook(Book book){
+    public Response addBook(Book book){
         mockedBooks.getBooks().add(book);
+        return Response.status(201).entity(book).build();
     }
 
     public void initializeShell() {

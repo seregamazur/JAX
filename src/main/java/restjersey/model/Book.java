@@ -8,6 +8,7 @@ public class Book {
     private float price;
     private String author;
 
+    public Book(){}
     public Book(int ID, String name, String author, float price) {
         this.ID = ID;
         this.name = name;
@@ -42,9 +43,9 @@ public class Book {
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("ID:",this.ID);
-        jsonObject.put("Book name:", this.name);
-        jsonObject.put("Book author:", this.author);
-        jsonObject.put("Book price:", this.price);
+        jsonObject.put("name:", this.name);
+        jsonObject.put("author:", this.author);
+        jsonObject.put("price:", this.price);
         return jsonObject;
     }
 
