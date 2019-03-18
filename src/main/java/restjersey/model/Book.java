@@ -5,11 +5,13 @@ import org.json.JSONObject;
 public class Book {
     private int ID;
     private String name;
-    private float price;
+    private int price;
     private String author;
 
-    public Book(){}
-    public Book(int ID, String name, String author, float price) {
+    public Book() {
+    }
+
+    public Book(int ID, String name, String author, int price) {
         this.ID = ID;
         this.name = name;
         this.author = author;
@@ -36,13 +38,13 @@ public class Book {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ID:",this.ID);
+        jsonObject.put("ID:", this.ID);
         jsonObject.put("name:", this.name);
         jsonObject.put("author:", this.author);
         jsonObject.put("price:", this.price);
@@ -57,6 +59,12 @@ public class Book {
         this.ID = ID;
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Book) {
+            Book book = (Book) obj;
+            return this.name.equals(book.name) && this.author.equals(book.author);
+        }
+        return false;
+    }
 }
-

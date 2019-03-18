@@ -38,7 +38,6 @@ public class RESTController {
     @Path("/save")
     @Consumes("application/json")
     @Produces("application/json")
-
     public Response saveBook(String json) {
         Gson gson = new Gson();
         Book book = gson.fromJson(json, Book.class);
@@ -54,6 +53,4 @@ public class RESTController {
     public void destroy() {
         service.clearShell();
     }
-
-
 }

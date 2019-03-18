@@ -20,10 +20,14 @@ public class BooksDataService {
         return mockedBooks;
     }
 
-    public Book addBook(Book book) {
-        book.setID(books.size() + 1);
-        books.add(book);
-        return book;
+    public boolean addBook(Book book) {
+        if (books.contains(book)) {
+            return false;
+        } else {
+            book.setID(books.size() + 1);
+            books.add(book);
+        }
+        return true;
     }
 
     public List<Book> getBooks() {

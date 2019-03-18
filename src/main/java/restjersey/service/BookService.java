@@ -26,14 +26,18 @@ public class BookService {
     }
 
     public Response addBook(Book book) {
-        String result = "" + mockedBooks.addBook(book).toJson();
-        return Response.status(201).entity(result).build();
+        String result = "" + book.toJson();
+        if (!mockedBooks.addBook(book)) {
+            return Response.status(400).entity("This book is already exist").build();
+        } else {
+            return Response.status(201).entity(result).build();
+        }
     }
 
     public void initializeShell() {
-        mockedBooks.addBook(new Book(1, "First Book", "Serhiy Mazur", 9.45f));
-        mockedBooks.addBook(new Book(2, "Second Book", "Serhiy Mazur", 5.44f));
-        mockedBooks.addBook(new Book(3, "Third Book", "Serhiy Mazur", 19.99f));
+        mockedBooks.addBook(new Book(1, "First Book", "Serhiy Mazur", 10));
+        mockedBooks.addBook(new Book(2, "Second Book", "Serhiy Mazur", 11));
+        mockedBooks.addBook(new Book(3, "Third Book", "Serhiy Mazur", 12));
     }
 
     public void clearShell() {
