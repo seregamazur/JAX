@@ -6,16 +6,16 @@ import org.json.JSONArray;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BooksDataService {
+public class BooksData {
     private static List<Book> books = new LinkedList<>();
-    private static BooksDataService mockedBooks;
+    private static BooksData mockedBooks;
 
-    private BooksDataService() {
+    private BooksData() {
     }
 
-    public static BooksDataService getInstance() {
+    public static BooksData getInstance() {
         if (mockedBooks == null) {
-            mockedBooks = new BooksDataService();
+            mockedBooks = new BooksData();
         }
         return mockedBooks;
     }
@@ -30,6 +30,15 @@ public class BooksDataService {
         return true;
     }
 
+    public boolean editBook(Book book) {
+        if (book.getID() > books.size()) {
+            return false;
+        } else {
+            books.set(book.getID()-1, book);
+            return true;
+        }
+    }
+
     public List<Book> getBooks() {
         return books;
     }
@@ -41,10 +50,6 @@ public class BooksDataService {
             }
         }
         return null;
-    }
-
-    public void putBook(int id, Book book) {
-        books.set(id, book);
     }
 
     public void deleteBook(int id) {

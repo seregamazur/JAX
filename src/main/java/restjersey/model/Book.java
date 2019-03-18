@@ -34,7 +34,7 @@ public class Book {
         this.author = author;
     }
 
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
 

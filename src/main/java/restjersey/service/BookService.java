@@ -1,13 +1,13 @@
 package main.java.restjersey.service;
 
 import main.java.restjersey.model.Book;
-import main.java.restjersey.model.BooksDataService;
+import main.java.restjersey.model.BooksData;
 import org.json.JSONException;
 
 import javax.ws.rs.core.Response;
 
 public class BookService {
-    private final BooksDataService mockedBooks = BooksDataService.getInstance();
+    private final BooksData mockedBooks = BooksData.getInstance();
 
     public Response getBooks() throws JSONException {
         String result = "" + mockedBooks.toJsonArray();
@@ -29,6 +29,15 @@ public class BookService {
         String result = "" + book.toJson();
         if (!mockedBooks.addBook(book)) {
             return Response.status(400).entity("This book is already exist").build();
+        } else {
+            return Response.status(201).entity(result).build();
+        }
+    }
+
+    public Response editBook(Book book) {
+        String result = "" + book.toJson();
+        if (!mockedBooks.editBook(book)) {
+            return Response.status(400).entity("This book isn't exist in base").build();
         } else {
             return Response.status(201).entity(result).build();
         }
