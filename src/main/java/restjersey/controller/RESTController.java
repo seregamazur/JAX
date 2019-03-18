@@ -54,6 +54,17 @@ public class RESTController {
         return service.editBook(book);
     }
 
+    @PUT
+    @Path("/edit/{bookID}")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Response editBook(String json,@PathParam("bookID") int bookID) {
+        Gson gson = new Gson();
+        Book book = gson.fromJson(json, Book.class);
+        book.setID(bookID);
+        return service.editBook(book);
+    }
+
     @PostConstruct
     public void init() {
         service.initializeShell();
