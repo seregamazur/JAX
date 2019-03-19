@@ -3,6 +3,7 @@ package main.java.restjersey.dao;
 import main.java.restjersey.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.json.JSONArray;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -12,6 +13,17 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 public class BookDAO {
+    private static BookDAO dao;
+
+    private BookDAO() {
+    }
+
+    public static BookDAO getInstance() {
+        if (dao == null) {
+            dao = new BookDAO();
+        }
+        return dao;
+    }
 
     private SessionFactory sessionFactory;
 
@@ -57,4 +69,6 @@ public class BookDAO {
         sessionFactory.getCurrentSession().delete(book);
         return "Book information with id " + book.getID() + " deleted successfully";
     }
+
+
 }

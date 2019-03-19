@@ -3,7 +3,6 @@ package main.java.restjersey.model;
 
 import org.json.JSONArray;
 
-import javax.persistence.EntityManager;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class BooksData {
         if (book.getID() > books.size()) {
             return false;
         } else {
-            books.set(book.getID()-1, book);
+            books.set(book.getID() - 1, book);
             return true;
         }
     }
