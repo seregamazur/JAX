@@ -3,6 +3,7 @@ package main.java.restjersey.model;
 
 import org.json.JSONArray;
 
+import javax.persistence.EntityManager;
 import java.util.LinkedList;
 import java.util.List;
 
