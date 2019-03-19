@@ -3,10 +3,10 @@ package main.java.restjersey.model;
 import org.json.JSONObject;
 
 import javax.persistence.*;
-
+import java.io.Serializable;
 @Entity
 @Table(name = "Book")
-public class Book {
+public class Book implements Serializable {
     @Id @GeneratedValue
     @Column(name = "id")
     private int ID;
