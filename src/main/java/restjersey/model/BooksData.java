@@ -40,7 +40,7 @@ public class BooksData {
         }
     }
 
-    public List<Book> getBooks() {
+    private List<Book> getBooks() {
         return books;
     }
 

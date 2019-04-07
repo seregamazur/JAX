@@ -51,11 +51,11 @@ public class Book {
         return jsonObject;
     }
 
-    public int getID() {
+    int getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    void setID(int ID) {
         this.ID = ID;
     }
 
