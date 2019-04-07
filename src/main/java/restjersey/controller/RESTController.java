@@ -5,8 +5,6 @@ import main.java.restjersey.model.Book;
 import main.java.restjersey.service.BookService;
 import org.json.JSONException;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
@@ -35,7 +33,7 @@ public class RESTController {
     }
 
     @POST
-    @Path("/save")
+    @Path("{bookID}")
     @Consumes("application/json")
     @Produces("application/json")
     public Response saveBook(String json) {
@@ -45,7 +43,7 @@ public class RESTController {
     }
 
     @PUT
-    @Path("/edit")
+    @Path("{bookID}")
     @Consumes("application/json")
     @Produces("application/json")
     public Response editBook(String json) {
@@ -53,7 +51,7 @@ public class RESTController {
         Book book = gson.fromJson(json, Book.class);
         return service.editBook(book);
     }
-
+/*
     @PUT
     @Path("/edit/{bookID}")
     @Consumes("application/json")
@@ -64,5 +62,5 @@ public class RESTController {
         book.setID(bookID);
         return service.editBook(book);
     }
-
+*/
 }
