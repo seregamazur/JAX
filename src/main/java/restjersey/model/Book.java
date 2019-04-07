@@ -3,6 +3,7 @@ package main.java.restjersey.model;
 import org.json.JSONObject;
 
 public class Book {
+
     private int ID;
     private String name;
     private String author;
