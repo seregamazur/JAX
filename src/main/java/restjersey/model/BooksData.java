@@ -16,6 +16,7 @@ public class BooksData {
     public static BooksData getInstance() {
         if (mockedBooks == null) {
             mockedBooks = new BooksData();
+            initializeShell();
         }
         return mockedBooks;
     }
@@ -31,10 +32,10 @@ public class BooksData {
     }
 
     public boolean editBook(Book book) {
-        if (book.getID() > books.size()) {
+        if (book.getID() > books.size()|| book.getID()<1) {
             return false;
         } else {
-            books.set(book.getID()-1, book);
+            books.set(book.getID() - 1, book);
             return true;
         }
     }
@@ -44,6 +45,9 @@ public class BooksData {
     }
 
     public Book getBookByID(int id) {
+        if(id>books.size() || id<1){
+            return null;
+        }
         for (Book book : mockedBooks.getBooks()) {
             if (book.getID() == id) {
                 return book;
@@ -52,18 +56,29 @@ public class BooksData {
         return null;
     }
 
-    public void deleteBook(int id) {
-        for (Book book : mockedBooks.getBooks()) {
-            if (book.getID() == id) {
-                mockedBooks.getBooks().remove(book);
+    public boolean deleteBook(int id) {
+        if (id > books.size() || id<1) {
+            return false;
+        } else {
+            for (Book book : mockedBooks.getBooks()) {
+                if (book.getID() == id) {
+                    mockedBooks.getBooks().remove(book);
+                }
             }
         }
+        return true;
     }
 
     public JSONArray toJsonArray() {
         JSONArray jsonArray = new JSONArray();
         jsonArray.put(books);
         return jsonArray;
+    }
+
+     private static void initializeShell() {
+        books.add(new Book(1, "First Book", "Serhiy Mazur", 10));
+        books.add(new Book(2, "Second Book", "Serhiy Mazur", 11));
+        books.add(new Book(3, "Third Book", "Serhiy Mazur", 12));
     }
 
 

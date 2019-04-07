@@ -65,13 +65,4 @@ public class RESTController {
         return service.editBook(book);
     }
 
-    @PostConstruct
-    public void init() {
-        service.initializeShell();
-    }
-
-    @PreDestroy
-    public void destroy() {
-        service.clearShell();
-    }
 }
