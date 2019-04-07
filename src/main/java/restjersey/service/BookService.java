@@ -1,21 +1,24 @@
 package main.java.restjersey.service;
 
+import main.java.restjersey.dao.BookDAO;
 import main.java.restjersey.model.Book;
 import main.java.restjersey.model.BooksData;
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 public class BookService {
     private final BooksData mockedBooks = BooksData.getInstance();
+    private final BookDAO bookDAO = BookDAO.getInstance();
 
     public Response getBooks() throws JSONException {
-        String result = "" + mockedBooks.toJsonArray();
-        return Response.status(200).entity(result).build();
+        return Response.status(200).entity(toJsonArray(bookDAO.getAll())).build();
     }
 
     public Response getBookById(int ID) throws JSONException {
-        String result = "" + mockedBooks.getBookByID(ID).toJson();
+        String result = "" + bookDAO.get(ID).toJson();
         return Response.status(200).entity(result).build();
     }
 
@@ -53,4 +56,9 @@ public class BookService {
         mockedBooks.getBooks().clear();
     }
 
+    public JSONArray toJsonArray(List<Book> books) {
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.put(books);
+        return jsonArray;
+    }
 }

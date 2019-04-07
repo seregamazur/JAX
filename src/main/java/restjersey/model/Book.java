@@ -4,6 +4,8 @@ import org.json.JSONObject;
 
 
 public class Book {
+import java.io.Serializable;
+public class Book implements Serializable {
     private int ID;
     private String name;
     private String author;
