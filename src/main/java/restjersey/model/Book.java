@@ -2,19 +2,11 @@ package main.java.restjersey.model;
 
 import org.json.JSONObject;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "Book")
 public class Book {
-    @Id @GeneratedValue
-    @Column(name = "id")
     private int ID;
-    @Column(name = "name")
     private String name;
-    @Column(name = "author")
     private String author;
-    @Column(name = "price")
     private int price;
 
     public Book() {
