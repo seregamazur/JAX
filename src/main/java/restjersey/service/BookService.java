@@ -33,10 +33,12 @@ public class BookService {
     }
 
     public Response addBook(Book book) {
+
         if (!mockedBooks.addBook(book)) {
             return Response.status(400).entity("This book is already exist").build();
         } else {
-            return Response.status(201).entity(mockedBooks.toJsonArray()).build();
+            String result = mockedBooks.toJsonArray() + "";
+            return Response.status(201).entity(result).build();
         }
     }
 
